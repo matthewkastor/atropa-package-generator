@@ -1,0 +1,48 @@
+{
+  "name": "atropa-package-generator",
+  "version": "0.0.0",
+  "description": "A node.js module for generating templated files and directory structures without gettting heavy with configs and strange language.",
+  "main": "./src/atropa-package-generator.js",
+  "bin" : {
+    "atropa-package-generator" : "./bin/cli.js"
+  },
+  "directories": {
+    "lib": "src",
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "atropa-jsformatter": ">=0.1.2",
+    "atropa-jslint": ">=0.1.2",
+    "jsdoc-toolkit": "git+https://github.com/matthewkastor/node-jsdoc-toolkit.git#fix-tests"
+  },
+  "scripts": {
+    "buildDocs": "jsdoc-toolkit -v -d=./docs/jsdoc/ -r -s src/",
+    "lint" : "atropa-jslint ./src/atropa-package-generator.js",
+    "srcFormat" : "atropa-jsformatter ./src/atropa-package-generator.js ./src/atropa-package-generator.js"
+  },
+  "homepage" : "https://github.com/matthewkastor/atropa-package-generator/",
+  "bugs" : "https://github.com/matthewkastor/atropa-package-generator/issues",
+  "repository": {
+    "type" : "git",
+    "url" : "git://github.com/matthewkastor/atropa-package-generator.git"
+  },
+  "keywords": [
+    "atropa-package-generator",
+    "atropa"
+  ],
+  "author": {
+    "name"      : "Matthew Kastor",
+    "email"     : "matthewkastor@gmail.com",
+    "url"       : "https://plus.google.com/100898583798552211130"
+  },
+  "licenses": [
+    {
+        "type" : "gpl-3.0",
+        "url" : "http://www.gnu.org/licenses/gpl-3.0-standalone.html"
+    }
+  ],
+  "dependencies": {
+    "directory-transform": ">=0.1.0",
+    "mustache": ">=0.7.2"
+  }
+}

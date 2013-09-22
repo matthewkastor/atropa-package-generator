@@ -1,0 +1,51 @@
+{
+  "name": "{{{packageName}}}",
+  "version": "{{{packageVersion}}}",
+  "description": "{{{packageDescription}}}",
+  "main": "./src/{{{packageName}}}.js",
+  "bin" : {
+    "{{{packageName}}}" : "./bin/cli.js"
+  },
+  "directories": {
+    "lib": "src",
+    "bin": "bin",
+    "doc": "docs",
+    "example": "examples"
+  },
+  "devDependencies": {
+    "atropa-jsformatter": ">=0.1.2",
+    "atropa-jslint": ">=0.1.2",
+    "browserify": ">=2.29.1",
+    "jasmine-node": ">=1.11.0",
+    "jsdoc-toolkit": "git+https://github.com/matthewkastor/node-jsdoc-toolkit.git#fix-tests"
+  },
+  "scripts": {
+    "start": "node start.js",
+    "test": "jasmine-node specs/",
+    "buildBrowserModule" : "node dev/browserify.js",
+    "buildDocs": "jsdoc-toolkit -v -d=./docs/jsdoc/ -r -s src/",
+    "lint" : "atropa-jslint ./src/{{{packageName}}}.js",
+    "srcFormat" : "atropa-jsformatter ./src/{{{packageName}}}.js ./src/{{{packageName}}}.js"
+  },
+  "homepage" : "https://github.com/{{{githubUserName}}}/{{{packageName}}}/",
+  "bugs" : "https://github.com/{{{githubUserName}}}/{{{packageName}}}/issues",
+  "repository": {
+    "type" : "git",
+    "url" : "git://github.com/{{{githubUserName}}}/{{{packageName}}}.git"
+  },
+  "keywords": [
+    "{{{packageName}}}",
+    "{{{organization}}}"
+  ],
+  "author": {
+    "name"      : "{{{authorName}}}",
+    "email"     : "{{{authorEmail}}}",
+    "url"       : "{{{authorUrl}}}"
+  },
+  "licenses": [
+    {
+        "type" : "{{{licenseType}}}",
+        "url" : "{{{licenseUrl}}}"
+    }
+  ]
+}

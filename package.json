@@ -1,6 +1,6 @@
 {
   "name": "atropa-package-generator",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A node.js module for generating templated files and directory structures without gettting heavy with configs and strange language.",
   "main": "./src/atropa-package-generator.js",
   "bin" : {

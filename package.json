@@ -28,7 +28,17 @@
   },
   "keywords": [
     "atropa-package-generator",
-    "atropa"
+    "atropa",
+    "scaffold",
+    "scaffolding",
+    "skeleton",
+    "project",
+    "template",
+    "templates",
+    "generate",
+    "generator",
+    "init",
+    "build"
   ],
   "author": {
     "name"      : "Matthew Kastor",

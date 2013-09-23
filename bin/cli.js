@@ -2,7 +2,9 @@
 /*jslint
     white : true,
     vars : true,
-    node : true
+    node : true,
+    regexp: true,
+    stupid: true
 */
 var atropaPackageGenerator = require('../src/atropa-package-generator.js');
 var os = require('os');
@@ -60,6 +62,10 @@ switch(opts.packageName) {
     default:
         console.log('generating package using options :');
         console.log(opts);
+        console.log(
+            "Don't forget to run npm install in the root of your" +
+            "generated package"
+        );
         break;
 }
 // generate the package if no help option was given.

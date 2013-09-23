@@ -11,6 +11,12 @@ npm install atropa-package-generator
 
 ## Usage
 
+ 1. Generate a package
+ 2. Run `npm install` in the generated package's root.
+ 3. Edit package & publish.
+
+### Command Line
+
 The command line interface takes four arguments, the package name, the output
  directory, template options, and the template to use. Additional properties and
  the template directory are optional. If no template directory is specified the
@@ -61,6 +67,8 @@ Additional properties available in the default template are: `packageVersion`,
  `authorEmail`, `authorUrl`, `licenseType`, `licenseUrl`, `codeLicenseBlock`,
  `htmlLicenseBlock`
 
+### Script
+
 To generate the default package skeleton from scripts do:
 
 ```
@@ -105,6 +113,9 @@ For full documentation see the docs folder. There's advanced stuff in there,
  like how to use something other than mustache if you'd like.
 
 ## Hacking
+
+To install the developer scripts, navigate to this module's root and run
+ `npm install`.
 
 There are several other scripts listed in package.json for development and
  hacking on this module. They can be run with `npm run-script` followed by the

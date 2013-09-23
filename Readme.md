@@ -50,7 +50,7 @@ Additional properties for the template may be specified on the command line
  may specify as many additional properties as you want. The template properties
  are to be specified before the template directory. For the default template
  you could specify the author name and it would appear in both the `package.json`
- file and the Readme.md file generated. The command would look like this:
+ file and the `Readme.md` file generated. The command would look like this:
 
 ```
 node_modules/.bin/atropa-package-generator my-package ./node_modules authorName:bill
@@ -104,11 +104,12 @@ bob/
 
 The contents of the static and dynamic subdirectories are merged into the
  generated package. Contents of the dynamic directory are run through
- mustache.js. Any options given to `atropaPackageGenerator.generate` are passed
- to mustache's `view` and are available for expansion anywhere. File contents,
- file names, and folder names may contain mustache tags. Take a look at the
- templates in the templates directory. It's easy to make your own.
- 
+ [mustache.js](https://github.com/janl/mustache.js/). Any options given to
+ `atropaPackageGenerator.generate` are passed to mustache's `view` and are
+ available for expansion anywhere. File contents, file names, and folder names
+ may contain mustache tags. Take a look at the templates in the templates
+ directory. It's easy to make your own.
+
 ```
 var atropaPackageGenerator = require('atropa-package-generator');
 atropaPackageGenerator.generate({

@@ -64,7 +64,7 @@ switch(opts.packageName) {
         console.log(opts);
         console.log(
             "Don't forget to run npm install in the root of your" +
-            "generated package"
+            " generated package"
         );
         break;
 }

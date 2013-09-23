@@ -75,7 +75,18 @@ To generate the default package skeleton from scripts do:
 var atropaPackageGenerator = require('atropa-package-generator');
 atropaPackageGenerator.generate({
         packageName : 'your-package',
-        outputDirectory : './node_modules'
+        outputDirectory : './node_modules',
+        packageVersion : "2013.09.22-1535",
+        packageDescription : "Awesome package does awesome things.",
+        githubUserName : "My Username on Github",
+        organization : "Awesomesauce Labs",
+        authorName : "My Name",
+        authorEmail : "me@mailinator.com",
+        authorUrl : "http://npmjs.org/~your_name_here",
+        licenseType : "gpl-3.0",
+        licenseUrl : "http://www.gnu.org/licenses/gpl-3.0-standalone.html",
+        codeLicenseBlock : "Code Licence Block",
+        htmlLicenseBlock : "HTML License Block"
 });
 // generates your-package in the node_modules folder. Go edit it.
 ```

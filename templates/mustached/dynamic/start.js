@@ -1,4 +1,6 @@
+/*
 {{{codeLicenseBlock}}}
+*/
 function init () {
     return require('./src/{{{packageName}}}.js');
 }

@@ -121,7 +121,7 @@ atropaPackageGenerator.generate({
 // generates your-custom-package in the node_modules folder, using the bob template.
 ```
 
-For full documentation see the docs folder. There's advanced stuff in there,
+For full documentation see the `docs` folder. There's advanced stuff in there,
  like how to use something other than mustache if you'd like.
 
 ## Hacking
@@ -129,9 +129,9 @@ For full documentation see the docs folder. There's advanced stuff in there,
 To install the developer scripts, navigate to this module's root and run
  `npm install`.
 
-There are several other scripts listed in package.json for development and
+There are several scripts listed in `package.json` for development and
  hacking on this module. They can be run with `npm run-script` followed by the
- scripts property corresponding to the script you want to run. For example,
+ `scripts` property corresponding to the script you want to run. For example,
  given a script called `buildDocs`, it could be run from the package root by:
 
 ```

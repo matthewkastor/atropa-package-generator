@@ -102,12 +102,12 @@ bob/
   |_dynamic/
 ```
 
-The contents of the static and dynamic subdirectories are merged into the
- generated package. Contents of the dynamic directory are run through
+The contents of the `static` and `dynamic` subdirectories are merged into the
+ generated package. Contents of the `dynamic` directory are run through
  [mustache.js](https://github.com/janl/mustache.js/). Any options given to
  `atropaPackageGenerator.generate` are passed to mustache's `view` and are
  available for expansion anywhere. File contents, file names, and folder names
- may contain mustache tags. Take a look at the templates in the templates
+ may contain mustache tags. Take a look at the templates in the `templates`
  directory. It's easy to make your own.
 
 ```

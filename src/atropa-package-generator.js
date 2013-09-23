@@ -142,7 +142,7 @@ module.exports.generate = function mustacheTransformsCli(options) {
     Object.keys(opts).forEach(function (prop) {
         options[prop] = options[prop] || opts[prop];
     });
-    options.camelizedpackageName = camelize(options.packageName);
+    options.camelizedPackageName = camelize(options.packageName);
     options.packageDirectory = path.resolve(options.outputDirectory, options.packageName);
     var mustache = require('mustache');
     var transformFns = {

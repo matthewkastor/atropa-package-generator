@@ -48,12 +48,13 @@ npm run-script buildDocs
 ## Author
 
 {{{authorName}}}
+
 {{{organization}}}
 
 {{{authorEmail}}}
+
 {{{authorUrl}}}
 
 ## License
 
-{{{licenseType}}}
-{{{licenseUrl}}}
+{{{licenseType}}} {{{licenseUrl}}}

@@ -1,5 +1,4 @@
 # {{{packageName}}}
-version {{{packageVersion}}}
 
 {{{packageDescription}}}
 
@@ -10,6 +9,7 @@ npm install {{{packageName}}}
 ```
 
 https://npmjs.org/package/{{{packageName}}}
+
 Source code available at: https://github.com/{{{githubUserName}}}/{{{packageName}}}/
 
 ## Usage

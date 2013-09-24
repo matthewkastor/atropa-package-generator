@@ -4,71 +4,82 @@
     vars : true,
     node : true,
     regexp: true,
-    stupid: true
+    stupid: true,
+    nomen: true
 */
-var atropaPackageGenerator = require('../src/atropa-package-generator.js');
+"use strict";
 var os = require('os');
 var fs = require('fs');
+var path = require('path');
+var atropaPackageGenerator = require('../src/atropa-package-generator.js');
 
-var argz = Array.prototype.slice.call(process.argv, 2);
-// the first two arguments must be the package name and output directory
-// in that order
-var opts = {
+function getArgz () {
+    return Array.prototype.slice.call(process.argv, 2);
+}
+function lastArgFileExists (argz) {
+    var out = false;
+    if(argz.length > 0) {
+        if(fs.existsSync(argz[argz.length - 1])) {
+            out = true;
+        }
+    }
+    return out;
+}
+function getOpts () {
+    var argz = getArgz();
+
+    // the first two arguments must be the package name and output directory
+    // in that order
+    var opts = {
         packageName : argz.shift(),
         outputDirectory : argz.shift()
     };
-// the last argument must be the template directory
-if(argz.length > 0) {
-    if(fs.existsSync(argz[argz.length - 1])) {
+    if(lastArgFileExists(argz)) {
         opts.templateDirectory = argz.pop();
     }
+    // the third through next to last argument are template properties of the form
+    // <property name>:<value> property names must not contain colons.
+    var tmp, curr, optsRegex = /^([^:]+):(.*)$/;
+    while(argz.length > 0) {
+        curr = argz.shift();
+        // ignores arguments that don'e match the regex
+        if(optsRegex.test(curr)) {
+            tmp = curr.match(optsRegex);
+            opts[tmp[1]] = tmp[2];
+            tmp = '';
+        }
+        curr = '';
+    }
+    return opts;
 }
-// the third to next to last argument are template properties of the form
-// <property name>:<value> property names must not contain colons.
-var tmp;
-while(argz.length > 0) {
-    tmp = argz.shift().match(/^([^:]+):(.*)$/);
-    opts[tmp[1]] = tmp[2];
-    tmp = '';
+function getMessage (fileLoc) {
+    var message = fs.readFileSync(path.resolve(__dirname, fileLoc), 'utf8');
+    return message.replace(/(\r\n|\r|\n)/g, os.EOL);
 }
-// defaults to generating the package, will be set to false if help option is
-// given
-var generate = true;
-
-switch(opts.packageName) {
-    // the following cases trigger the help message, fallthrough is intentional.
-    case undefined :
-    case '-h' :
-    case '--help' :
-    case '/?' :
-        generate = false;
-        console.log(
-            'Usage:' + os.EOL +
-            'atropa-package-generator <package name> <output directory>' + os.EOL +
-            '[[additional property]...] [template directory]' + os.EOL + os.EOL +
-            'Package name is the desired name for the generated package.' + os.EOL + os.EOL +
-            'Output directory is the desired location for the generated package.' + os.EOL + os.EOL +
-            'Template directory is the template to use for generating the package' +
-            ' it is optional. If it is not specified then the default template' +
-            ' will be used.' + os.EOL + os.EOL +
-            'Additional properties for your template may be specified on the' +
-            ' command line by separating the property and value with a colon' +
-            ' like extra_property:awesome. You may specify as many additional' +
-            ' properties as you want.'
-        );
-        break;
-    // the default case is when no help option was given. It reports the
-    // template properties and values being used for generation.
-    default:
-        console.log('generating package using options :');
-        console.log(opts);
-        console.log(
-            "Don't forget to run npm install in the root of your" +
-            " generated package"
-        );
-        break;
+function helpRequestCheck () {
+    var didRequest;
+    switch(getArgz()[0]) {
+        // the following cases trigger the help message, fallthrough is intentional.
+        case undefined :
+        case '-h' :
+        case '--help' :
+        case '/?' :
+            didRequest = true;
+            break;
+        default:
+            didRequest = false;
+            break;
+    }
+    return didRequest;
 }
-// generate the package if no help option was given.
-if(generate === true) {
-   atropaPackageGenerator.generate(opts);
+function main () {
+    var opts = getOpts();
+    if(helpRequestCheck()) {
+        var helpMessage = getMessage('./helpMessage.txt');
+        console.log(helpMessage);
+    } else {
+        atropaPackageGenerator.generate(opts);
+    }
 }
+main();
+    

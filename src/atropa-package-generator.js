@@ -122,26 +122,25 @@ module.exports.baseGenerator = function baseGenerator(templateDir, outputDir, tr
  *  });
  *  // generates your-package in the node_modules folder, using aTemplate.
  */
-module.exports.generate = function mustacheTransformsCli(options) {
+module.exports.generate = function generate(options) {
     function camelize(str) {
         return str.replace(/[^a-zA-Z0-9_]+./g, function (match) {
             return match[1].toUpperCase();
         });
     }
+    var os = require('os');
     var path = require('path');
+    var objectMerge = require('object-merge');
     options = options || {};
     if (!options.outputDirectory) {
         throw new Error('output directory must be specified');
     }
     // set default options
-    var opts = {
-            packageName: 'default-package',
-            outputDirectory: false,
-            templateDirectory: path.resolve(__dirname, '../templates/mustached/')
-        };
-    Object.keys(opts).forEach(function (prop) {
-        options[prop] = options[prop] || opts[prop];
-    });
+    var opts = module.exports.getDefaultOptions(options.templateDirectory);
+    options = objectMerge(opts, options);
+    console.log('generating package using options :');
+    console.log(options);
+    console.log(os.EOL + 'Don\'t forget to run npm install in the root of your' + ' generated package');
     options.camelizedPackageName = camelize(options.packageName);
     options.packageDirectory = path.resolve(options.outputDirectory, options.packageName);
     var mustache = require('mustache');
@@ -166,4 +165,27 @@ module.exports.generate = function mustacheTransformsCli(options) {
             }
         };
     module.exports.baseGenerator(options.templateDirectory, options.packageDirectory, transformFns, false, true);
+};
+/**
+ * Gets the default settings for the template if present. Template defaults may
+ *  be defined in <code>defaultOptions.json</code> in the template's root
+ *  directory.
+ * @name getDefaultOptions
+ * @methodOf atropaPackageGenerator.
+ * @param {String} [templateDirectory =  templates/mustached in this package]
+ *  The root directory of your template.
+ */
+module.exports.getDefaultOptions = function getDefaultOptions(templateDirectory) {
+    var path = require('path');
+    var fs = require('fs');
+    templateDirectory = templateDirectory || path.resolve(__dirname, '../templates/mustached');
+    var defaultOptions = {};
+    if (templateDirectory) {
+        var defaultsFileLoc = path.resolve(templateDirectory, 'defaultOptions.json');
+        if (fs.existsSync(defaultsFileLoc)) {
+            defaultOptions = require(defaultsFileLoc);
+        }
+        defaultOptions.templateDirectory = templateDirectory;
+    }
+    return defaultOptions;
 };

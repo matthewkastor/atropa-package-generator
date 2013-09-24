@@ -1,0 +1,14 @@
+{
+    "packageName" : "default-package",
+    "packageVersion" : "0.0.1",
+    "packageDescription" : "Awesome package does awesome things.",
+    "githubUserName" : "My Username on Github",
+    "organization" : "Awesomesauce Labs",
+    "authorName" : "My Name",
+    "authorEmail" : "me@mailinator.com",
+    "authorUrl" : "http://npmjs.org/~your_name_here",
+    "licenseType" : "gpl-3.0",
+    "licenseUrl" : "http://www.gnu.org/licenses/gpl-3.0-standalone.html",
+    "codeLicenseBlock" : "Code Licence Block",
+    "htmlLicenseBlock" : "HTML License Block"
+}

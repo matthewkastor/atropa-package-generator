@@ -1,0 +1,14 @@
+Usage:
+atropa-package-generator <package name> <output directory> [[additional property]...] [template directory]
+
+Package name is the desired name for the generated package.
+
+Output directory is the desired location for the generated package.
+
+Additional properties for your template may be specified on the command line by separating the property and value with a colon like:
+
+atropa-package-generator wobble-flam . "authorName:Mr. Pickles" "packageDescription:wobbles the flam"
+
+The additional properties are optional and are defined in the template. You may specify as many additional properties as you want. You may have to escape or quote these arguments depending on their value and the shell you are using.
+
+Template directory is the template to use for generating the package, it is optional. If it is not specified then the default template will be used.

@@ -98,6 +98,7 @@ Templates are just regular directories and files. For a template called bob, the
 
 ```
 bob/
+  |_defaultOptions.json
   |_static/
   |_dynamic/
 ```
@@ -107,7 +108,10 @@ The contents of the `static` and `dynamic` subdirectories are merged into the
  [mustache.js](https://github.com/janl/mustache.js/). Any options given to
  `atropaPackageGenerator.generate` are passed to mustache's `view` and are
  available for expansion anywhere. File contents, file names, and folder names
- may contain mustache tags. Take a look at the templates in the `templates`
+ may contain mustache tags. `defaultOptions.json` is a JSON file describing the
+ default values for the template. The default options will be merged with the
+ options given to `atropaPackageGenerator.generate`, with the provided options
+ overriding the defaults. Take a look at the templates in the `templates`
  directory. It's easy to make your own.
 
 ```
